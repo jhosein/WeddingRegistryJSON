@@ -1,4 +1,5 @@
-﻿using System;
+﻿using RegistryScraper.Services;
+using System;
 
 namespace WeddingRegSandbox
 {
@@ -6,7 +7,10 @@ namespace WeddingRegSandbox
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            Console.WriteLine("Press enter to start...");
+            Console.ReadLine();
+
+            RegistryService.GetTargetItems();
         }
     }
 }

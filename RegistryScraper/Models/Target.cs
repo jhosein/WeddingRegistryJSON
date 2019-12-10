@@ -39,6 +39,8 @@ namespace RegistryScraper.Models
     {
         string formatted_current_price { get; set; }
         string formatted_current_price_type { get; set; }
+        decimal reg_retail { get; set; }
+        decimal current_retail { get; set; }
         bool default_price { get; set; }
         int save_percent { get; set; }
         int save_dollar { get; set; }
