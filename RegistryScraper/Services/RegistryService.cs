@@ -28,7 +28,7 @@ namespace RegistryScraper.Services
 
                 foreach (var item in targetResponse.registries.items)
                 {
-                    Console.WriteLine(item.title + " " + item.price);
+                    Console.WriteLine(item.title + " " + item.price.formatted_current_price);
                 }
                 return null;
             }

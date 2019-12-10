@@ -25,7 +25,7 @@ namespace RegistryScraper.Models
         public int requested_quantity { get; set; }
         public int purchased_quantity { get; set; }
         public string title { get; set; }
-        public TargetImage images {get; set;}
+        public TargetImage images { get; set; }
         public TargetPrice price { get; set; }
         public string target_dot_com_uri { get; set; }
     }
@@ -37,17 +37,17 @@ namespace RegistryScraper.Models
 
     public class TargetPrice
     {
-        string formatted_current_price { get; set; }
-        string formatted_current_price_type { get; set; }
-        decimal reg_retail { get; set; }
-        decimal current_retail { get; set; }
-        bool default_price { get; set; }
-        int save_percent { get; set; }
-        int save_dollar { get; set; }
+        public string formatted_current_price { get; set; }
+        public string formatted_current_price_type { get; set; }
+        public decimal reg_retail { get; set; }
+        public decimal current_retail { get; set; }
+        public bool default_price { get; set; }
+        public int save_percent { get; set; }
+        public decimal save_dollar { get; set; }
     }
 
     public class TargetOnlineInfo
     {
-        string freeShipping { get; set; }
+        public string freeShipping { get; set; }
     }
 }
