@@ -10,7 +10,10 @@ namespace WeddingRegSandbox
             Console.WriteLine("Press enter to start...");
             Console.ReadLine();
 
-            RegistryService.GetTargetItems();
+            var amazonItems = RegistryService.GetAmazonItems();
+            var targetItems = RegistryService.GetTargetItems();
+
+
         }
     }
 }
