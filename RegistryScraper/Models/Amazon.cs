@@ -34,7 +34,7 @@ namespace RegistryScraper.Models
 
     public class AmazonPrice
     {
-        public int amount { get; set; }
+        public decimal? amount { get; set; }
         public string displayString { get; set; }
     }
 }
