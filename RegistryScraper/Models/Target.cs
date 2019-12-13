@@ -27,6 +27,7 @@ namespace RegistryScraper.Models
         public string title { get; set; }
         public TargetImage images { get; set; }
         public TargetPrice price { get; set; }
+        public TargetOnlineInfo online_info { get; set; }
         public string target_dot_com_uri { get; set; }
     }
 
@@ -48,6 +49,6 @@ namespace RegistryScraper.Models
 
     public class TargetOnlineInfo
     {
-        public string freeShipping { get; set; }
+        public bool freeShipping { get; set; }
     }
 }
