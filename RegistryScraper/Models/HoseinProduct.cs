@@ -4,13 +4,15 @@ using System.Text;
 
 namespace RegistryScraper.Models
 {
-    public class HoseinRegistryItem
+    public class HoseinProduct
     {
+        public int storeCode { get; set; }
+        public string storeDisplayString { get; set; }
         public string productID { get; set; }
-        public string storeName { get; set; }
         public string productTitle { get; set; }
         public string priceDisplayString { get; set; }
-        public decimal priceRaw { get; set; }
+        public decimal priceCurrent { get; set; }
+        public decimal priceReg { get; set; }
         public string imageURL { get; set; }
         public string productURL { get; set; }
         public int qtyRequested { get; set; }
