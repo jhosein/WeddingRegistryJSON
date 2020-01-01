@@ -12,7 +12,7 @@ namespace RegistryScraper.Services
         public static List<TargetItem> GetTargetItems()
         {
             //Refactor to pull from config file.
-            string registryURL = "https://api.target.com/registry_items_availabilities/v2/giftgiver/3a92afc801324e298104fbac638f4f02/2799?channel_name=web&key=a85fa3a4f72483a59c54a7ac8c223fa4d16588c7&sn_id=95843810";
+            string registryURL = "https://api.target.com/registry_items_availabilities/v2/giftgiver/3a92afc801324e298104fbac638f4f02/1983?channel_name=web&key=a85fa3a4f72483a59c54a7ac8c223fa4d16588c7&sn_id=30127094";
             
             var client = new RestClient(registryURL);
             var request = new RestRequest()
@@ -25,8 +25,9 @@ namespace RegistryScraper.Services
             {
                 var response = client.Execute(request);
                 var targetResponse = JsonConvert.DeserializeObject<TargetResponse>(response.Content);
+                var targetItems = new List<TargetItem>(targetResponse.registries.items);
 
-                return new List<TargetItem>(targetResponse.registries.items);
+                return RemoveNullItems(targetItems);
             }
             catch (Exception ex)
             {
@@ -34,6 +35,25 @@ namespace RegistryScraper.Services
                 Console.WriteLine(ex.Message);
                 throw ex;
             }
+        }
+
+        private static List<TargetItem> RemoveNullItems(List<TargetItem> targetItems)
+        {
+            var itemsToRemove = new List<TargetItem>();
+
+            //Target will throw a random null object in this list. Handle accordingly.
+            //https://stackoverflow.com/questions/2024179/collection-was-modified-enumeration-operation-may-not-execute-in-arraylist
+            foreach (var item in targetItems)
+            {
+                if (typeof(TargetPrice).IsInstanceOfType(item.price) == false)
+                    itemsToRemove.Add(item);
+            }
+
+            foreach (var removeItem in itemsToRemove)
+            {
+                targetItems.Remove(removeItem);
+            }
+            return targetItems;
         }
 
         public static List<AmazonItem> GetAmazonItems()
