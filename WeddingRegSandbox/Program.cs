@@ -23,11 +23,14 @@ namespace WeddingRegSandbox
             products.AddRange(ProductService.Standardize(targetItems));
             products.AddRange(ProductService.Standardize(amazonItems));
 
-            using (StreamWriter file = File.CreateText("products.json"))
-            {
-                JsonSerializer serializer = new JsonSerializer();
-                serializer.Serialize(file, products);
-            }
+            FileUploader.UploadProducts(products);
+
+            //Write file
+            //using (StreamWriter file = File.CreateText("products.json"))
+            //{
+            //    JsonSerializer serializer = new JsonSerializer();
+            //    serializer.Serialize(file, products);
+            //}
 
         }
     }
